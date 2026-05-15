@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docs:dev": "vitepress dev docs-site",
-    "docs:build": "vitepress build docs-site",
+    "build": "vitepress build docs-site",
     "docs:preview": "vitepress preview docs-site"
   },
   "devDependencies": {
