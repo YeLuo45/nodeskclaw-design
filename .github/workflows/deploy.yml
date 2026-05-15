@@ -27,18 +27,26 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '20'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: |
-          cd docs-site && npm install
+        working-directory: ./docs-site
+        run: pnpm install
 
       - name: Build
-        run: |
-          cd docs-site && npm run docs:build
+        working-directory: ./docs-site
+        run: pnpm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
