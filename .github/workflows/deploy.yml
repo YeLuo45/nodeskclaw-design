@@ -40,16 +40,10 @@ jobs:
         run: |
           cd docs-site && npm run docs:build
 
-      - name: Debug dist
-        run: |
-          echo "=== pwd ===" && pwd
-          echo "=== docs-site contents ===" && ls -la docs-site/
-          echo "=== .vitepress contents ===" && ls -la docs-site/.vitepress/ 2>/dev/null || echo "no .vitepress"
-          echo "=== dist contents ===" && ls -la docs-site/.vitepress/dist/ 2>/dev/null || echo "no dist"
-
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
+          name: github-pages
           path: ./docs-site/.vitepress/dist
 
       - name: Deploy to GitHub Pages
