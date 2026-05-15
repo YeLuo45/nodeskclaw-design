@@ -43,10 +43,13 @@ jobs:
         working-directory: ./docs-site
         run: pnpm run docs:build
 
+      - name: Show dist structure
+        run: find docs-site -name "dist" -type d 2>/dev/null && ls -la docs-site/.vitepress/ 2>/dev/null || echo "no .vitepress dir"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./docs-site/.vitepress/dist
+          path: docs-site/.vitepress/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
