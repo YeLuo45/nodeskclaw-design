@@ -41,9 +41,8 @@ jobs:
           cd docs-site && npm run docs:build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: ./docs-site/.vitepress/dist
 
       - name: Deploy to GitHub Pages
